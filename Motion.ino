@@ -1,16 +1,22 @@
 void motion() {
   digitalWrite(enablePin, HIGH);
+  stepper.setSpeed(3000);
 
   // תזוזה של מנוע הצעד למעלה (1200 צעדים)
   if (myServo.read() == 0) {
     moveStepperToPosition(1200, "going up");
+    unsigned long currentMillis = millis();
 
     // בדיקה אם עזבה את המפסק גבול התחתון אחרי 2 שניות
-    delay(2000);
+    if (currentMillis - previousMillis >= interval) {
+    // קוד שיבוצע כל 2 שניות
+    previousMillis = currentMillis;
+  
     if (digitalRead(lowerLimitPin) == LOW) {
       Serial.println("Error: Carriage did not leave the bottom limit switch.");
       stopProgram();  // פונקציה שעוצרת את התוכנית
       return;  // יציאה מהפונקציה
+    }
     }
   }
 
