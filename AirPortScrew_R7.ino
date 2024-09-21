@@ -9,6 +9,9 @@ const int dirPin = 10;      // פין ה-DIR של בקר ה-TB6600
 const int enablePin = 9;    // פין ה-ENA של בקר ה-TB6600
 const int lowerLimitPin = 2; // פין של מפסק הגבול התחתון
 
+unsigned long previousMillis = 0;
+const long interval = 2000; // 2 שניות
+
 int buttonState = 0;        // משתנה לאחסון מצב הלחצן הנוכחי
 int lastButtonState = 0;    // משתנה לאחסון מצב הלחצן הקודם
 bool programStarted = false; // דגל לבדיקת תחילת התוכנית
@@ -25,7 +28,7 @@ void setup() {
   Serial.begin(9600);         // פתיחת חיבור סדרתי לצורכי דיבוג
 
   // קביעת מהירות ותאוצה למנוע הצעד
-  stepper.setMaxSpeed(2000);  // הגדרת מהירות מקסימלית
+  stepper.setMaxSpeed(4000);  // הגדרת מהירות מקסימלית
   stepper.setAcceleration(500);
   Home();
 
