@@ -33,7 +33,7 @@ void setup() {
 }
 
 void loop() {
-  motion();
+    motion();
 // קריאת מצב הלחצן הנוכחי
   buttonState = digitalRead(buttonPin);
 
