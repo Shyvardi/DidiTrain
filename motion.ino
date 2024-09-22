@@ -1,7 +1,7 @@
 void motion() {
 
 if (myServo.read() == 0) {
-movestepper  (20000,"Going Up");
+movestepper  (80000,"Going Up");
  }
  rotateServo(0, 128, 10);
 

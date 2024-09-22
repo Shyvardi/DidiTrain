@@ -30,13 +30,12 @@ void setup() {
   stepper.setAcceleration(1500);
   stepper.setSpeed(30000);
   digitalWrite(enablePin, HIGH);
-  if (digitalRead(lowerLimitPin) == HIGH) {
   home();
-  } else { stepper.setCurrentPosition(0);}
+  
 }
 
 void loop() {
-    
+   
 // קריאת מצב הלחצן הנוכחי
   buttonState = digitalRead(buttonPin);
 
