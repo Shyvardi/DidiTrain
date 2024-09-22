@@ -26,14 +26,17 @@ void setup() {
   myServo.attach(servoPin);
   Serial.begin(9600);
 
-  stepper.setMaxSpeed(1000);
-  stepper.setAcceleration(500);
+  stepper.setMaxSpeed(1000000);
+  stepper.setAcceleration(1500);
+  stepper.setSpeed(30000);
   digitalWrite(enablePin, HIGH);
+  if (digitalRead(lowerLimitPin) == HIGH) {
   home();
+  } else { stepper.setCurrentPosition(0);}
 }
 
 void loop() {
-    motion();
+    
 // קריאת מצב הלחצן הנוכחי
   buttonState = digitalRead(buttonPin);
 
